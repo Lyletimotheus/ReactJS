@@ -1,15 +1,13 @@
-import './App.css';
-import Header from './components/Header';
-import Page from './components/Page';
-import Footer from './components/Footer';
-
+// PROJECT 1 IMPORTS 
+import './project_1/App.css';
+import Header from './project_1/components/Header';
+import Page from './project_1/components/Page';
 
 function App() {
   return (
     <div>
       <Header />
       <Page />
-      <Footer />
     </div>
   );
 }
