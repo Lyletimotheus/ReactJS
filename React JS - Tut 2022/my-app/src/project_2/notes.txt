@@ -1,0 +1,7 @@
+Project requirements
+1. Build from scratch
+2. Separate components  
+    2.1 info (photo, name, buttons, etc)
+    2.2 about
+    2.3 interests
+    2.4 footer
