@@ -429,17 +429,16 @@ h1 {
 
 .main-content {
   margin-left: 1.4rem;
-  background: url('./assets/hero-image.png') no-repeat right -10rem center;
-  background-size: contain;
-  backdrop-filter: contrast(0);
+  background: url('./assets/hero-image.png') no-repeat right center;
 }
 
 .reasons-list > li {
-  margin-bottom: 1rem;
+  padding-block: 10px;
   font-size: 1.2rem;
   font-weight: 400;
 }
 
 li::marker {
   color: #61DAFB;
+  font-size: 1.4rem;
 }
