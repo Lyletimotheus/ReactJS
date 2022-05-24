@@ -400,12 +400,29 @@ nav > img {
 }
 
 /* CARD SECTION */
-.cards {
+.card {
   margin-top: 49px;
 }
 
 .card-container {
   margin-left: 36px;
+  position: relative;
+}
+
+.card-container > span {
+  position: absolute;
+  background-color: #f4f4f4; 
+  left: 6px;
+  top: 12px;
+  position: absolute;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 110%;
+  text-align: center;
+  color: #222222;
+  padding: 0.55rem;
+  border-radius: 4px;
 }
 
 .card-body {

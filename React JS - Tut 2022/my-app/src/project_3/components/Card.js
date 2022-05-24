@@ -4,9 +4,11 @@ import star from '../assets/star.svg';
 
 function Card() {
   return (
-    <section className='cards'>
+    <section className='card'>
         <div className='card-container'>
           <img src={card_image} alt="katie zaferes"/>
+          <span>SOLD OUT</span>
+
           <div className='card-body'>
             <p>
               <img src={star} alt='star icon' className='card-body--star'/> 5.0 
