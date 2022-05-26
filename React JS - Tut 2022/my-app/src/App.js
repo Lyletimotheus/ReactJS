@@ -22,6 +22,13 @@
 // import cardImage4 from './project_3/assets/image_15.jpg';
 // import cardImage5 from './project_3/assets/image_16.jpg';
 // import data from './project_3/data';
+
+// *** PROJECT 4 IMPORTS ***
+import data from './project_4/data';
+import './project_4/App.css';
+import Header from './project_4/components/Header';
+import Card from './project_4/components/Card';
+
 // ------------------------------------ IMPORTS END --------------------------------------
 
 
@@ -148,8 +155,21 @@
 
 // PROJECT 4 FUNCTION
 function App() {
+  const Cards = data.map((item) => {
+    return <Card 
+      key={item.id}
+      {...item}
+    />
+  })
   return (
-    <div>App</div>
+    <div>
+      <Header />
+      <main>
+        <section className="cards">
+          {Cards}
+        </section>
+      </main>
+    </div>
   );
 }
 
