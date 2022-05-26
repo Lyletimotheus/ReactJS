@@ -1,22 +1,29 @@
 import React from 'react';
 // import card_image from '../assets/image_12.png';
-import star from '../assets/star.svg';
+// import star from '../assets/star.svg';
 
-function Card({isSoldOut,status, img, rating, ratingTotal, country, text, amount}) {
-  console.log(isSoldOut);
+function Card(props) {
+  console.log(props);
+  let badgeText;
+  if(props.openSpots === 0) {
+    badgeText = "SOLD OUT";
+  } else if(props.location === "Online") {
+    badgeText = "ONLINE";
+  }
   return (
     <div className='card'>
         <div className='card-container'>
-          <img src={img} alt="katie zaferes" width="264" height="353" className="card--image"/>
-          <span className={isSoldOut ? 'SOLD OUT' : ""}></span>
-
+          <img src={`../assets/${props.coverImg}`} alt="katie zaferes" width="264" height="353" className="card--image"/>
+          {/* Check for openstatus to equal zero and if it does display it with a span */}
+          {/* {props.status === 0 && <span>SOLD OUT</span>} */}
+          {badgeText && <span>{badgeText}</span>}
           <div className='card-body'>
             <p>
-              <img src={star} alt='star icon' className='card-body--star'/> {rating} 
-              <span className='card-body--text_top'>({ratingTotal}) &#9679; {country} </span>
+              <img src={`../assets/star.svg`} alt='star icon' className='card-body--star'/> {props.stats.rating} 
+              <span className='card-body--text_top'>({props.stats.reviewCount}) &#9679; {props.country} </span>
             </p>
-            <p>{text}</p>
-            <p><span className='bold'>From ${amount}</span> / person</p>
+            <p>{props.title}</p>
+            <p><span className='bold'>From ${props.price}</span> / person</p>
           </div>
         </div>
     </div>
