@@ -13,12 +13,32 @@ function Meme() {
 
     const [allMemes, setAllMemes] =  React.useState([]);
 
+    // **** USING .then syntax to resolve a promise, with UseEffect ****
+
+    // React.useEffect(() => {
+    //   return fetch('https://api.imgflip.com/get_memes')
+    //     .then(res => res.json())
+    //     .then(data => setAllMemes(data.data.memes))
+    // }, []);
+
+    // **** USING ASYNC AWAIT WITH USEEFFECT ****
+    
     React.useEffect(() => {
-      return fetch('https://api.imgflip.com/get_memes')
-        .then(res => res.json())
-        .then(data => setAllMemes(data.data.memes))
-    }, []);
-    console.log(allMemes)
+      async function getMemes() {
+        const res = await fetch('https://api.imgflip.com/get_memes');
+        const data = await res.json();
+        setAllMemes(data.data.memes)
+      }
+      // Calling the above async function
+      getMemes();
+
+      // Provide a cleanup function if needed
+      // return () => {
+
+      // }
+    }, [])
+
+    console.log(allMemes) 
 
     function newImage() {
 
