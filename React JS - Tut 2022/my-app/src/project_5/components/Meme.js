@@ -1,29 +1,77 @@
 import React from 'react';
-import memesData from '../memesData'
+// import memesData from '../memesData'
 
 function Meme() {
-    const [memeImage, setMemeImage] = React.useState("");
-    // console.log(memeImage);
+
+    const [meme, setMeme] = React.useState(
+      {
+        topText: "",
+        bottomText: "",
+        randomImage: "http://i.imgflip.com/1bij.jpg"
+      }
+    );
+
+    const [allMemes, setAllMemes] =  React.useState([]);
+
+    React.useEffect(() => {
+      return fetch('https://api.imgflip.com/get_memes')
+        .then(res => res.json())
+        .then(data => setAllMemes(data.data.memes))
+    }, []);
+    console.log(allMemes)
 
     function newImage() {
-        const memeArray = memesData.data.memes;
-        const randomImage = memeArray[Math.floor(Math.random() * memeArray.length)];
-        // console.log(randomImage.url);       
-        
-        return setMemeImage(randomImage.url);
 
+        const memeArray = allMemes;
+        // console.log(allMemes);
+        const randomObject = memeArray[Math.floor(Math.random() * memeArray.length)];
+        const url = randomObject.url;
+        
+        setMeme((prevMemeImage) => {
+          return {
+            ...prevMemeImage,
+            randomImage: url
+          }
+        })
     }
 
-    
+    function handleChange(event) {
+        const {name, value} = event.target
+        setMeme(prevMemeState => {
+          return {
+            ...prevMemeState,
+            // COMPUTED VALUE
+            [name] : value
+          }
+        })
+    }
+
   return (
     <section className="form--section">
         <div className="form">
-            <input type="text" placeholder='please enter top text' className="form--input"/>
-            <input type="text" placeholder='please enter bottom text' className="form--input"/>
+            <input 
+                type="text"
+                placeholder='please enter top text'
+                className="form--input"
+                onChange={handleChange}
+                name="topText"
+                value={meme.topText}
+            />
+            <input 
+                type="text" 
+                placeholder='please enter bottom text' 
+                className="form--input"
+                onChange={handleChange}
+                name="bottomText"
+                value={meme.bottomText}
+            />
+            <button onClick={newImage}>Get a new meme image 🖼</button> 
         </div>
-        <button onClick={newImage}>Get a new meme image 🖼</button> 
-
-        <img src={memeImage} alt="" className="memeImage"/>
+        <div className='meme'>
+          <img src={meme.randomImage} alt="" className="memeImage"/>
+          <h2 className='meme--text top'>{meme.topText}</h2>
+          <h2 className='meme--text bottom'>{meme.bottomText}</h2>
+        </div>
         
     </section>
   )

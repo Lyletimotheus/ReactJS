@@ -159,12 +159,14 @@ import Meme from './project_5/components/Meme';
 
 // PROJECT 4 FUNCTION
 // function App() {
+  
 //   const Cards = data.map((item) => {
 //     return <Card 
 //       key={item.id}
 //       {...item}
 //     />
 //   })
+
 //   return (
 //     <div>
 //       <Header />
